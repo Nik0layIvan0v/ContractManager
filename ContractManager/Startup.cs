@@ -35,8 +35,7 @@ namespace ContractManager.Web
             using ContractManagerDbContext context =
                 serviceScope.ServiceProvider.GetRequiredService<ContractManagerDbContext>();
 
-            //context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
+            context.Database.Migrate();
 
             if (env.IsDevelopment())
             {

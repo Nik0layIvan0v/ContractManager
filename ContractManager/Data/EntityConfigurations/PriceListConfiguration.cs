@@ -9,6 +9,11 @@
         public void Configure(EntityTypeBuilder<PriceList> priceList)
         {
             priceList
+                .Property(x => x.Price)
+                .HasColumnType("decimal")
+                .HasPrecision(2);
+
+            priceList
                 .HasOne(list => list.MilkControl)
                 .WithMany(milkControl => milkControl.PriceLists)
                 .HasForeignKey(fk => fk.MilkControlId)
